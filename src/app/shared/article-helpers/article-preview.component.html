@@ -1,4 +1,4 @@
-<div class="article-preview">
+<div class="article-preview" style="background: rgba(246,246,246,0.71)">
   <app-article-meta [article]="article">
     <app-favorite-button
       [article]="article"
@@ -8,8 +8,8 @@
       {{ article.favoritesCount }}
     </app-favorite-button>
   </app-article-meta>
-
-  <a [routerLink]="['/article', article.slug]" class="preview-link">
+  <!--  -->
+  <a (click)="alert('Voir l\'article: '+ article.title)" [routerLink]="['/article', article.slug]" class="preview-link">
     <h1>{{ article.title }}</h1>
     <p>{{ article.description }}</p>
     <span>Read more...</span>

@@ -22,7 +22,8 @@
       {{ comment.createdAt | date : "longDate" }}
     </span>
     <span class="mod-options" *ngIf="canModify$ | async">
-      <i class="ion-trash-a" (click)="delete.emit(true)"></i>
+      <img src="assets/trash.jpeg" style="width: 20px; height: 20px" (click)="delete.emit(true)" />
+      <!-- <i class="ion-trash-a" (click)="delete.emit(true)"></i> -->
     </span>
   </div>
 </div>

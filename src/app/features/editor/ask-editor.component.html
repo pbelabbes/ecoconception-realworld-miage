@@ -1,0 +1,30 @@
+<div class="editor-page">
+  <div class="container page" style="display:  flex; justify-content: center;">
+    <div *ngIf="!isVerify">
+        <img src="assets/chat_1.gif" />
+
+        <button
+        class="btn btn-lg pull-xs-right btn-primary"
+        type="button"
+        (click)="isVerify = !isVerify"
+      >
+        Vous êtes sur de publier l'article ?
+      </button>
+    </div>
+    
+  </div>
+    <div class="container page" style="display:  flex; justify-content: center;">
+        <div *ngIf="isVerify">
+          <img src="assets/chat_2.gif" />
+
+          <button
+              class="btn btn-lg pull-xs-right btn-primary"
+              type="button"
+              *ngIf="isVerify"
+              (click)="publishArticle()"
+          >
+              Je veux publier un article
+          </button>
+        </div>
+    </div>
+</div>
