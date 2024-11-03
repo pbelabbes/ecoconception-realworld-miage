@@ -13,10 +13,12 @@ Le but ne sera pas de l'optimiser et à l'inverse, de dégrader l'application en
 
 ### Etape 1 : installation
 
-1. Cloner le repo répertoire : `git clone https://github.com/pbelabbes/ecoconception-realworld-miage.git`
-2. Créer une branche : `git switch -c m2-2023/<nom1>_<nom2>`
-3. Installer les dépendance : `yarn install`
-4. Lancer l'application : `yarn start` et vérifier que tout fonctionne
+1. Faire une fork du repo répertoire : `git clone https://github.com/pbelabbes/ecoconception-realworld-miage.git`
+1. Installer les dépendance : `yarn install`
+1. Lancer l'application : `yarn start` et vérifier que tout fonctionne
+1. Modifier le fichier `binome.md`
+1. Faire un commit `init binome`
+1. Pousser son commit
 
 ### Etape 2 : Développement
 
