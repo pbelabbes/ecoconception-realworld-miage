@@ -13,7 +13,7 @@ Le but ne sera pas de l'optimiser et à l'inverse, de dégrader l'application en
 
 ### Etape 1 : installation
 
-1. Faire une fork du repo répertoire : `git clone https://github.com/pbelabbes/ecoconception-realworld-miage.git`
+1. Faire une fork du repo répertoire
 1. Installer les dépendance : `yarn install`
 1. Lancer l'application : `yarn start` et vérifier que tout fonctionne
 1. Modifier le fichier `binome.md`
