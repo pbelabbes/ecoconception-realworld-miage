@@ -44,7 +44,8 @@
               />
               <div class="tag-list">
                 <span *ngFor="let tag of tagList" class="tag-default tag-pill">
-                  <i class="ion-close-round" (click)="removeTag(tag)"></i>
+                  <img src="assets/close.jpeg" style="width: 20px; height: 20px"  (click)="removeTag(tag)"/> 
+                  <!-- <i class="ion-close-round" (click)="removeTag(tag)"></i> -->
                   {{ tag }}
                 </span>
               </div>
@@ -53,9 +54,22 @@
             <button
               class="btn btn-lg pull-xs-right btn-primary"
               type="button"
+              *ngIf="!isVerify"
+              (click)="isVerify = !isVerify"
+            >
+              Vous êtes vraiment suurrrr de publier l'article ?
+            </button>
+            <p *ngIf="isVerify && !isVerify2"  >Click sur l'escargot dans 5 seconds</p>
+            <div *ngIf="isVerify && !isVerify2" (click)="isVerify2 =!isVerify2" class="loading">
+              <img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!sw800" />
+            </div>
+            <button
+              class="btn btn-lg pull-xs-right btn-primary"
+              type="button"
+              *ngIf="isVerify && isVerify2"
               (click)="submitForm()"
             >
-              Publish Article
+              Publier Article
             </button>
           </fieldset>
         </form>
