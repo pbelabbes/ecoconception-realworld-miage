@@ -1,4 +1,4 @@
-import { NgForOf } from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import {
   FormControl,
@@ -23,7 +23,7 @@ interface ArticleForm {
 @Component({
   selector: "app-editor-page",
   templateUrl: "./editor.component.html",
-  imports: [ListErrorsComponent, ReactiveFormsModule, NgForOf],
+    imports: [ListErrorsComponent, ReactiveFormsModule, NgForOf, NgIf],
   standalone: true,
 })
 export class EditorComponent implements OnInit, OnDestroy {
@@ -38,6 +38,8 @@ export class EditorComponent implements OnInit, OnDestroy {
   errors: Errors | null = null;
   isSubmitting = false;
   destroy$ = new Subject<void>();
+  isVerify = false;
+  isVerify2 = false;
 
   constructor(
     private readonly articleService: ArticlesService,
@@ -86,23 +88,35 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   submitForm(): void {
     this.isSubmitting = true;
+    this.isVerify2 = true;
 
-    // update any single tag
-    this.addTag();
+    alert("Activer le son pour entendre les applaudissements");
+    const audio = new Audio("assets/Applaudissements.wav");
+    audio.play();
+    
 
-    // post the changes
-    this.articleService
-      .create({
-        ...this.articleForm.value,
-        tagList: this.tagList,
-      })
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (article) => this.router.navigate(["/article/", article.slug]),
-        error: (err) => {
-          this.errors = err;
-          this.isSubmitting = false;
-        },
-      });
+
+    // add sleep to show loading
+    setTimeout(() => {
+
+      this.addTag();
+      // post the changes
+      this.articleService
+        .create({
+          ...this.articleForm.value,
+          tagList: this.tagList,
+        })
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (article) => this.router.navigate(["/article/", article.slug], ),
+          error: (err) => {
+            this.errors = err;
+            this.isSubmitting = false;
+            this.isVerify2 = false;
+          },
+        });
+
+        audio.pause();
+    }, 3000);
   }
 }

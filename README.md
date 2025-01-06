@@ -1,4 +1,18 @@
+# GAMBIEZ & MAHI
 # TP M2 MIAGE - Eco-conception
+
+### Pratiques mises en place à l'inverse
+* 1	Optimiser le parcours utilisateur
+* 6	Limiter le nombre de requêtes HTTP
+* 8	Favoriser les pages statiques
+* 17	Favoriser les polices standards
+* 18	Préférer les glyphs aux images
+* 26	Éviter les animations JavaScript / CSS
+* 42	Adapter les sons aux contextes d'écoute
+* 46	Limiter l'utilisation des GIFs animés
+* 61	Limiter le nombre d'appels aux API HTTP
+* 62	Limiter le recours aux carrousels
+* 65	Préférer la pagination au défilement infini
 
 **Note: Ce TP approche l'optimisation d'une application par l'absurde. L'objectif de ce TP sera donc de rendre une application la moins éco-conçu possible. Ne refaites pas ça chez vous**
 

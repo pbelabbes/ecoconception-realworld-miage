@@ -1,3 +1,8 @@
 .page-link {
   cursor: pointer;
+  transition: all 0.3s ease; /* Ajoute une transition pour un effet en douceur */
+}
+
+.page-link:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoute un effet de ring en utilisant box-shadow */
 }

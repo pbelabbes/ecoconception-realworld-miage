@@ -27,6 +27,11 @@ const routes: Routes = [
     ],
   },
   {
+    path: "connexion",
+    loadComponent: () =>
+      import("./core/authentication/authentication.component").then((m) => m.AuthenticationComponent),
+  },
+  {
     path: "settings",
     loadComponent: () =>
       import("./features/settings/settings.component").then(
@@ -64,6 +69,14 @@ const routes: Routes = [
     children: [
       {
         path: "",
+        loadComponent: () =>
+          import("./features/editor/ask-editor.component").then(
+            (m) => m.AskEditorComponent
+          ),
+        canActivate: [() => inject(UserService).isAuthenticated],
+      },
+      {
+        path: "publish",
         loadComponent: () =>
           import("./features/editor/editor.component").then(
             (m) => m.EditorComponent

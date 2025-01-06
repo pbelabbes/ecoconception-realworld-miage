@@ -32,6 +32,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   isSubmitting = false;
   authForm: FormGroup<AuthForm>;
   destroy$ = new Subject<void>();
+  isVerify = false
 
   constructor(
     private readonly route: ActivatedRoute,

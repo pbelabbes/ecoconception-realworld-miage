@@ -24,6 +24,9 @@ export class ArticleListComponent implements OnDestroy {
   LoadingState = LoadingState;
   destroy$ = new Subject<void>();
 
+  itemsPerPage = 10;
+  loadingMore = false;
+
   @Input() limit!: number;
   @Input()
   set config(config: ArticleListConfig) {
@@ -41,33 +44,63 @@ export class ArticleListComponent implements OnDestroy {
     this.destroy$.complete();
   }
 
-  setPageTo(pageNumber: number) {
-    this.currentPage = pageNumber;
-    this.runQuery();
+  // setPageTo(pageNumber: number) {
+  //   this.currentPage = pageNumber;
+  //   this.runQuery();
+  // }
+  setPageTo() {
+    console.log("setPageTo: "+ this.loadingMore);
+    if (!this.loadingMore) {
+      this.loadingMore = true;
+      this.currentPage++; // Augmentez le nombre de pages chargées
+      this.runQuery();
+    }
   }
 
+  // runQuery() {
+  //   this.loading = LoadingState.LOADING;
+  //   this.results = [];
+
+  //   // Create limit and offset filter (if necessary)
+  //   if (this.limit) {
+  //     this.query.filters.limit = this.limit;
+  //     this.query.filters.offset = this.limit * (this.currentPage - 1);
+  //   }
+
+  //   this.articlesService
+  //     .query(this.query)
+  //     .pipe(takeUntil(this.destroy$))
+  //     .subscribe((data) => {
+  //       this.loading = LoadingState.LOADED;
+  //       this.results = data.articles;
+
+  //       // Used from http://www.jstips.co/en/create-range-0...n-easily-using-one-line/
+  //       this.totalPages = Array.from(
+  //         new Array(Math.ceil(data.articlesCount / this.limit)),
+  //         (val, index) => index + 1
+  //       );
+  //     });
+  // }
   runQuery() {
+    console.log("runQuery");
+    
     this.loading = LoadingState.LOADING;
-    this.results = [];
-
-    // Create limit and offset filter (if necessary)
-    if (this.limit) {
-      this.query.filters.limit = this.limit;
-      this.query.filters.offset = this.limit * (this.currentPage - 1);
-    }
-
+  
+    // Créez le filtre limit et offset en fonction de la page actuelle
+    const offset = this.itemsPerPage * (this.currentPage - 1);
+    const limit = this.itemsPerPage;
+  
+    this.query.filters.limit = limit;
+    this.query.filters.offset = offset;
+  
     this.articlesService
       .query(this.query)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
         this.loading = LoadingState.LOADED;
-        this.results = data.articles;
-
-        // Used from http://www.jstips.co/en/create-range-0...n-easily-using-one-line/
-        this.totalPages = Array.from(
-          new Array(Math.ceil(data.articlesCount / this.limit)),
-          (val, index) => index + 1
-        );
+        this.results = this.results.concat(data.articles); // Ajoutez les nouveaux articles à la liste existante
+        this.loadingMore = false; // Réinitialisez la variable de chargement
       });
   }
+  
 }

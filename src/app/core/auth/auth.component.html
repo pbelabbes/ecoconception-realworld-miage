@@ -5,10 +5,10 @@
         <h1 class="text-xs-center">{{ title }}</h1>
         <p class="text-xs-center">
           <a *ngIf="authType === 'register'" [routerLink]="['/login']"
-            >Have an account?</a
+          >Have an account?</a
           >
           <a *ngIf="authType === 'login'" [routerLink]="['/register']"
-            >Need an account?</a
+          >Need an account?</a
           >
         </p>
         <app-list-errors [errors]="errors"></app-list-errors>
@@ -39,10 +39,17 @@
                 type="password"
               />
             </fieldset>
+            <div
+              class="btn btn-lg btn-primary pull-xs-right"
+              style="width: 250px; height: 50px"
+              (click)="isVerify = !isVerify"
+              *ngIf="!isVerify">
+              Valider mes données
+            </div>
             <button
               class="btn btn-lg btn-primary pull-xs-right"
-              [disabled]="!authForm.valid"
               type="submit"
+              *ngIf="isVerify"
             >
               {{ title }}
             </button>
