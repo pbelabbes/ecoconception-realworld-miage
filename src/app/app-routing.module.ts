@@ -1,7 +1,7 @@
 import { inject, NgModule } from "@angular/core";
-import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
-import { UserService } from "./core/services/user.service";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { map } from "rxjs/operators";
+import { UserService } from "./core/services/user.service";
 import { ProfileComponent } from "./features/profile/profile.component";
 
 const routes: Routes = [
@@ -9,6 +9,7 @@ const routes: Routes = [
     path: "",
     loadComponent: () =>
       import("./features/home/home.component").then((m) => m.HomeComponent),
+    data: { animation: "HomePage" },
   },
   {
     path: "login",
@@ -17,6 +18,7 @@ const routes: Routes = [
     canActivate: [
       () => inject(UserService).isAuthenticated.pipe(map((isAuth) => !isAuth)),
     ],
+    data: { animation: "AuthPage" },
   },
   {
     path: "register",
@@ -25,6 +27,7 @@ const routes: Routes = [
     canActivate: [
       () => inject(UserService).isAuthenticated.pipe(map((isAuth) => !isAuth)),
     ],
+    data: { animation: "SettingsPage" },
   },
   {
     path: "settings",
@@ -33,6 +36,7 @@ const routes: Routes = [
         (m) => m.SettingsComponent
       ),
     canActivate: [() => inject(UserService).isAuthenticated],
+    data: { animation: "SettingsPage" },
   },
   {
     path: "profile",
@@ -47,6 +51,7 @@ const routes: Routes = [
               import("./features/profile/profile-articles.component").then(
                 (m) => m.ProfileArticlesComponent
               ),
+            data: { animation: "ProfileArticlesPage" },
           },
           {
             path: "favorites",
@@ -54,6 +59,7 @@ const routes: Routes = [
               import("./features/profile/profile-favorites.component").then(
                 (m) => m.ProfileFavoritesComponent
               ),
+            data: { animation: "ProfileFavoritesPage" },
           },
         ],
       },
