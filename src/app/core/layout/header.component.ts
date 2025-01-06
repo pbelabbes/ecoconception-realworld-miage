@@ -7,6 +7,7 @@ import { ShowAuthedDirective } from "../../shared/show-authed.directive";
 @Component({
   selector: "app-layout-header",
   templateUrl: "./header.component.html",
+  styleUrls: ["./header.css"], // Ajouter le fichier CSS ici
   imports: [RouterLinkActive, RouterLink, AsyncPipe, NgIf, ShowAuthedDirective],
   standalone: true,
 })
