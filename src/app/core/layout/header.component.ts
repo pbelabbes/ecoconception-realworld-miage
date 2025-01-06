@@ -1,8 +1,8 @@
-import { Component, inject } from "@angular/core";
-import { UserService } from "../services/user.service";
-import { RouterLink, RouterLinkActive } from "@angular/router";
 import { AsyncPipe, NgIf } from "@angular/common";
+import { Component, inject } from "@angular/core";
+import { RouterLink, RouterLinkActive } from "@angular/router";
 import { ShowAuthedDirective } from "../../shared/show-authed.directive";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: "app-layout-header",
@@ -12,4 +12,12 @@ import { ShowAuthedDirective } from "../../shared/show-authed.directive";
 })
 export class HeaderComponent {
   currentUser$ = inject(UserService).currentUser;
+
+  ngAfterViewInit() {
+    // Example of using plain JavaScript to manipulate the DOM
+    const headerElement = document.querySelector(".logo") as HTMLElement;
+    if (headerElement) {
+      headerElement.style.height = "60px";
+    }
+  }
 }
