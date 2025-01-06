@@ -75,6 +75,7 @@ const routes: Routes = [
             (m) => m.EditorComponent
           ),
         canActivate: [() => inject(UserService).isAuthenticated],
+        data: { animation: "EditorPage" },
       },
       {
         path: ":slug",
@@ -83,6 +84,7 @@ const routes: Routes = [
             (m) => m.EditorComponent
           ),
         canActivate: [() => inject(UserService).isAuthenticated],
+        data: { animation: "EditorPage" },
       },
     ],
   },
@@ -92,6 +94,7 @@ const routes: Routes = [
       import("./features/article/article.component").then(
         (m) => m.ArticleComponent
       ),
+    data: { animation: "ArticlePage" },
   },
 ];
 
