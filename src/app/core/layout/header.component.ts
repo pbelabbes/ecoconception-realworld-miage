@@ -15,7 +15,9 @@ export class HeaderComponent {
 
   ngAfterViewInit() {
     // Example of using plain JavaScript to manipulate the DOM
-    const headerElement = document.querySelector(".logo") as HTMLElement;
+    const headerElement = document.querySelector(
+      ".logo-que-ya-dans-le-header"
+    ) as HTMLElement;
     if (headerElement) {
       headerElement.style.height = "60px";
     }
