@@ -1,0 +1,6 @@
+.im {
+  background-image: url("C:/Users/33781/Documents/ECOWEBTP/ecoconception-realworld-miage/src/app/core/layout/rose.jpg");
+  background-size: cover; /* Cette ligne fait en sorte que l'image couvre toute la surface */
+  background-position: center; /* Centrer l'image */
+  background-repeat: no-repeat; /* Empêche l'image de se répéter */
+}

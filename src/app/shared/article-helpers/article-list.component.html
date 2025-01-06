@@ -12,7 +12,10 @@
   No articles are here... yet.
 </div>
 
-<nav *ngIf="loading === LoadingState.LOADED && totalPages.length > 1">
+<nav
+  *ngIf="loading === LoadingState.LOADED && totalPages.length > 1"
+  class="test"
+>
   <ul class="pagination">
     <li
       class="page-item"
